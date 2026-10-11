@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Hyderabadi Dum Biryani | Recipe Card</title>
+  <meta name="description"
+    content="A semantic HTML5 and CSS3 recipe card for authentic Royal Hyderabadi Dum Biryani, demonstrating CSS box model, responsive design, and structured lists.">
+
+  <!-- Google Fonts: Outfit & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap"
+    rel="stylesheet">
+
+  <!-- Pure CSS3 Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Main Container -->
+  <main class="page-container">
+
+    <!-- Recipe Card Component -->
+    <article class="recipe-card">
+
+      <!-- Media Element (<figure> and <figcaption>) -->
+      <figure class="recipe-figure">
+        <div class="figure-media">
+          <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1200&q=80"
+            alt="Royal Hyderabadi Dum Biryani garnished with golden fried onions, fresh mint leaves, roasted cashews, and saffron-infused basmati rice"
+            class="recipe-image" width="1200" height="675">
+          <div class="image-gradient-overlay" aria-hidden="true"></div>
+
+          <!-- Floating Badges on Image -->
+          <div class="figure-badges">
+            <span class="badge badge-heritage">👑 Nizami Royal Heritage</span>
+            <span class="badge badge-rating">★ 4.9 (1,480+ Reviews)</span>
+          </div>
+        </div>
+
+        <!-- Semantic Figcaption -->
+        <figcaption class="recipe-figcaption">
+          <span class="caption-marker" aria-hidden="true">📸</span>
+          <span class="caption-text">
+            <strong>Authentic Nizami Dum Biryani:</strong> Fragrant long-grain basmati rice layered with spiced
+            marinated meat, sealed with dough, and slow-cooked in its own captured steam.
+          </span>
+        </figcaption>
+      </figure>
+
+      <!-- Recipe Card Content Body -->
+      <div class="recipe-card-body">
+
+        <!-- Recipe Header -->
+        <header class="recipe-header">
+          <div class="category-meta">
+            <span class="category-tag">Royal Indian Cuisine</span>
+            <span class="cuisine-tag">Origin: Hyderabad, India</span>
+          </div>
+
+          <h1 class="recipe-title">Royal Hyderabadi Dum Biryani</h1>
+
+          <p class="recipe-description">
+            An iconic culinary masterpiece perfected in the royal kitchens of the Nizams.
+            Aged long-grain basmati rice is layered over chicken marinated in spiced yogurt, ginger-garlic,
+            and royal garam masala, then finished with crispy fried onions (<em>birista</em>), fresh mint,
+            and saffron-infused milk—slow-cooked using the ancient sealed <em>dum pukht</em> technique.
+          </p>
+
+          <!-- Dietary Tags -->
+          <div class="dietary-tags">
+            <span class="tag-pill">🌾 Naturally Gluten-Free</span>
+            <span class="tag-pill">💪 High Protein</span>
+            <span class="tag-pill">🏺 Traditional Dum Pukht</span>
+            <span class="tag-pill">✨ Halal Certified</span>
+          </div>
+        </header>
+
+        <!-- Key Metrics Bar (CSS Box Model in Action) -->
+        <section class="recipe-metrics" aria-label="Recipe Quick Facts">
+          <div class="metric-card">
+            <span class="metric-icon">⏱️</span>
+            <span class="metric-label">Prep Time</span>
+            <strong class="metric-value">45 mins</strong>
+          </div>
+
+          <div class="metric-card">
+            <span class="metric-icon">🔥</span>
+            <span class="metric-label">Cook Time</span>
+            <strong class="metric-value">45 mins</strong>
+          </div>
+
+          <div class="metric-card">
+            <span class="metric-icon">⏳</span>
+            <span class="metric-label">Total Time</span>
+            <strong class="metric-value">90 mins</strong>
+          </div>
+
+          <div class="metric-card">
+            <span class="metric-icon">🍽️</span>
+            <span class="metric-label">Servings</span>
+            <strong class="metric-value">4 Servings</strong>
+          </div>
+
+          <div class="metric-card">
+            <span class="metric-icon">⚡</span>
+            <span class="metric-label">Difficulty</span>
+            <strong class="metric-value">Intermediate</strong>
+          </div>
+
+          <div class="metric-card">
+            <span class="metric-icon">🥗</span>
+            <span class="metric-label">Calories</span>
+            <strong class="metric-value">640 kcal</strong>
+          </div>
+        </section>
+
+        <!-- Two-Column Responsive Layout: Ingredients vs Preparation Steps -->
+        <div class="recipe-columns">
+
+          <!-- Ingredients Section (Semantic Unordered List <ul>) -->
+          <section class="recipe-column ingredients-section" aria-labelledby="ingredientsHeading">
+            <div class="column-header">
+              <span class="column-icon" aria-hidden="true">🌿</span>
+              <h2 id="ingredientsHeading" class="column-title">Ingredients</h2>
+            </div>
+
+            <!-- Group 1: Meat Marination -->
+            <div class="ingredient-group">
+              <h3 class="group-title">1. Meat Marination</h3>
+              <ul class="ingredients-list">
+                <li class="ingredient-item">
+                  <span class="qty">800g</span> Chicken thigh or bone-in pieces, washed &amp; patted dry
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">1 cup</span> Whisked plain Greek yogurt (thick curd)
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">2 tbsp</span> Fresh ginger-garlic paste (1:1 ratio)
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">1.5 tbsp</span> Kashmiri red chili powder &amp; 1 tsp turmeric
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">1 tbsp</span> Royal Shahi Garam Masala (cardamom, mace, cinnamon, cloves)
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">1 cup</span> Golden crispy fried onions (<em>Birista</em>), crushed
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">1/2 cup</span> Fresh mint and coriander leaves, chopped
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">1.5 tsp</span> Sea salt &amp; 1 tbsp freshly squeezed lemon juice
+                </li>
+              </ul>
+            </div>
+
+            <!-- Group 2: Fragrant Rice -->
+            <div class="ingredient-group">
+              <h3 class="group-title">2. Fragrant Basmati Rice</h3>
+              <ul class="ingredients-list">
+                <li class="ingredient-item">
+                  <span class="qty">500g</span> Aged long-grain Basmati rice (soaked for 40 mins)
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">2.5 L</span> Water for rolling boil
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">4 whole</span> Green cardamoms, 2 black cardamoms &amp; 4 cloves
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">2 leaves</span> Bay leaves (Tej Patta) &amp; 1 star anise
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">2 tbsp</span> Salt (water must taste pleasantly salty)
+                </li>
+              </ul>
+            </div>
+
+            <!-- Group 3: Dum Layering & Aromatics -->
+            <div class="ingredient-group">
+              <h3 class="group-title">3. Dum Layering &amp; Aromatics</h3>
+              <ul class="ingredients-list">
+                <li class="ingredient-item">
+                  <span class="qty">1/2 tsp</span> Pure saffron strands soaked in 1/4 cup warm milk
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">3 tbsp</span> Pure cow ghee (clarified butter)
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">1 tsp</span> Rose water or Kewra water (Nizami royal essence)
+                </li>
+                <li class="ingredient-item">
+                  <span class="qty">4 halves</span> Hard-boiled eggs &amp; roasted cashews for garnish
+                </li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Preparation Steps Section (Semantic Ordered List <ol>) -->
+          <section class="recipe-column steps-section" aria-labelledby="stepsHeading">
+            <div class="column-header">
+              <span class="column-icon" aria-hidden="true">👨‍🍳</span>
+              <h2 id="stepsHeading" class="column-title">Preparation Steps</h2>
+            </div>
+
+            <!-- Semantic Ordered List for Sequential Cooking Steps -->
+            <ol class="steps-list">
+
+              <!-- Step 1 -->
+              <li class="step-item">
+                <div class="step-content">
+                  <div class="step-meta">
+                    <h3 class="step-title">Deep Marination of the Meat</h3>
+                    <span class="step-badge">Step 1 &bull; 45 mins prep + 2 hrs rest</span>
+                  </div>
+                  <p class="step-instruction">
+                    In a heavy-bottomed brass handi or deep pot, combine the chicken with whisked yogurt,
+                    ginger-garlic paste, Kashmiri red chili powder, turmeric, royal shahi garam masala,
+                    crushed golden fried onions (<em>birista</em>), fresh mint, coriander, lemon juice, ghee, and salt.
+                    Massage spices thoroughly into the meat cuts. Cover and let marinate for at least <strong>2
+                      hours</strong> (or overnight in the refrigerator for maximum flavor penetration).
+                  </p>
+                </div>
+              </li>
+
+              <!-- Step 2 -->
+              <li class="step-item">
+                <div class="step-content">
+                  <div class="step-meta">
+                    <h3 class="step-title">Parboiling the Fragrant Basmati Rice (70% Rule)</h3>
+                    <span class="step-badge">Step 2 &bull; 7–8 mins</span>
+                  </div>
+                  <p class="step-instruction">
+                    Gently rinse the basmati rice until water runs clear, then soak in water for 40 minutes.
+                    In a large pot, bring 2.5 liters of water to a rolling boil with whole cardamoms, cloves, star
+                    anise,
+                    bay leaves, and salt. Add the soaked and drained rice. Cook on high heat for exactly <strong>6 to 7
+                      minutes</strong>
+                    until the rice grains are lengthened but still have a firm grain center (approx. <strong>70%
+                      cooked</strong>). Immediately drain through a colander.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Step 3 -->
+              <li class="step-item">
+                <div class="step-content">
+                  <div class="step-meta">
+                    <h3 class="step-title">Artisan Layering in the Handi</h3>
+                    <span class="step-badge">Step 3 &bull; 5 mins</span>
+                  </div>
+                  <p class="step-instruction">
+                    Spread the marinated chicken evenly across the bottom of the handi.
+                    Gently spoon half of the warm 70% parboiled rice over the meat.
+                    Scatter half of the saffron milk, remaining crispy fried onions, fresh mint, coriander, and roasted
+                    cashews.
+                    Layer the remaining rice over top. Drizzle melted cow ghee, remaining saffron milk, and aromatic
+                    kewra water in concentric circles.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Step 4 -->
+              <li class="step-item">
+                <div class="step-content">
+                  <div class="step-meta">
+                    <h3 class="step-title">The Sacred Dum Hermetic Seal</h3>
+                    <span class="step-badge">Step 4 &bull; 3 mins</span>
+                  </div>
+                  <p class="step-instruction">
+                    Roll whole wheat flour dough (<em>atta</em>) into a long rope and press it around the rim of the
+                    handi.
+                    Press the lid firmly onto the dough to create an airtight seal (alternatively, seal tightly with
+                    heavy double-layer aluminum foil under the lid).
+                    This traps all steam inside, forcing meat juices to vaporize through each grain of rice.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Step 5 -->
+              <li class="step-item">
+                <div class="step-content">
+                  <div class="step-meta">
+                    <h3 class="step-title">Two-Stage Dum Cooking on Tawa</h3>
+                    <span class="step-badge">Step 5 &bull; 35 mins</span>
+                  </div>
+                  <p class="step-instruction">
+                    Place the sealed handi directly on medium-high heat for <strong>8 to 10 minutes</strong> to build
+                    internal steam pressure.
+                    Then place a heavy flat cast-iron tawa/griddle under the handi, lower the heat to low, and cook for
+                    <strong>25 minutes</strong>
+                    in its trapped aromatic steam (<em>dum pukht</em>). Turn off heat; do not break the seal yet.
+                  </p>
+                </div>
+              </li>
+
+              <!-- Step 6 -->
+              <li class="step-item">
+                <div class="step-content">
+                  <div class="step-meta">
+                    <h3 class="step-title">Resting &amp; Gentle Nizami Service</h3>
+                    <span class="step-badge">Step 6 &bull; 15 mins</span>
+                  </div>
+                  <p class="step-instruction">
+                    Allow the handi to rest undisturbed for <strong>15 minutes</strong> off the flame so the delicate
+                    long grains settle and firm up.
+                    Break open the dough seal and inhale the burst of saffron and spice aromas!
+                    Using a flat saucer or wide skimmer, gently scoop from bottom to top, lifting succulent meat and
+                    rice together.
+                    Garnish with boiled egg halves, roasted cashews, and serve hot with Mirchi Ka Salan and cool Burani
+                    Raita.
+                  </p>
+                </div>
+              </li>
+
+            </ol>
+          </section>
+
+        </div>
+      </div>
+    </article>
+  </main>
+
+</body>
+
+</html>

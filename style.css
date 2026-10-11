@@ -1,0 +1,599 @@
+:root {
+  /* Typography */
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+
+  /* Color Palette: Warm Royal Nizami Spice Theme */
+  --color-bg-page: #0f1117;
+  --color-bg-card: #171b26;
+  --color-bg-surface: #1f2536;
+
+  /* Warm Gold Accents */
+  --color-gold: #f59e0b;
+  --color-gold-glow: rgba(245, 158, 11, 0.25);
+
+  /* Text & Foreground */
+  --color-text-main: #f8fafc;
+  --color-text-muted: #94a3b8;
+  --color-text-subtle: #64748b;
+
+  /* CSS Box Model Spacing & Borders */
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-gold: rgba(245, 158, 11, 0.35);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.55);
+  --shadow-gold: 0 10px 30px rgba(245, 158, 11, 0.15);
+
+  /* Border Radii */
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   2. CSS BOX MODEL RESETS & FOUNDATION
+   Universal box-sizing: border-box ensures padding & borders are contained
+   inside declared element widths, preventing unwanted layout overflow.
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg-page);
+  color: var(--color-text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 2rem 1.25rem 4rem;
+  background-image:
+    radial-gradient(circle at 10% 15%, rgba(245, 158, 11, 0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 85%, rgba(249, 115, 22, 0.06) 0%, transparent 40%);
+  background-attachment: fixed;
+}
+
+/* --------------------------------------------------------------------------
+   3. PAGE CONTAINER
+   -------------------------------------------------------------------------- */
+.page-container {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   4. RECIPE CARD CONTAINER (CSS Box Model in Action)
+   - Margin: Centers the card on page and spaces from header/footer
+   - Border: 1px subtle stroke with gold elevation glow
+   - Padding: Generous interior breathing room
+   - Content: Image, titles, ingredients list, numbered steps
+   -------------------------------------------------------------------------- */
+.recipe-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg), var(--shadow-gold);
+  overflow: hidden;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.recipe-card:hover {
+  border-color: var(--border-gold);
+}
+
+/* --------------------------------------------------------------------------
+   5. MEDIA ELEMENT (<figure> & <figcaption>)
+   -------------------------------------------------------------------------- */
+.recipe-figure {
+  margin: 0;
+  /* Reset default figure margin */
+  padding: 0;
+  width: 100%;
+  position: relative;
+  background: #000;
+}
+
+.figure-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  /* Modern aspect-ratio prevents Cumulative Layout Shift (CLS) */
+  max-height: 520px;
+  overflow: hidden;
+}
+
+.recipe-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.recipe-card:hover .recipe-image {
+  transform: scale(1.03);
+}
+
+.image-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+      rgba(15, 17, 23, 0.45) 0%,
+      transparent 45%,
+      rgba(15, 17, 23, 0.9) 100%);
+  pointer-events: none;
+}
+
+/* Floating Badges on Image */
+.figure-badges {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  z-index: 2;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.badge-heritage {
+  background: rgba(15, 17, 23, 0.75);
+  border: 1px solid var(--border-gold);
+  color: var(--color-gold);
+}
+
+.badge-rating {
+  background: rgba(15, 17, 23, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* Semantic Figcaption Styling */
+.recipe-figcaption {
+  background: var(--color-bg-surface);
+  border-top: 1px solid var(--border-color);
+  padding: 0.85rem 1.5rem;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  line-height: 1.5;
+}
+
+.caption-marker {
+  font-size: 1rem;
+}
+
+.caption-text strong {
+  color: var(--color-text-main);
+}
+
+/* --------------------------------------------------------------------------
+   6. RECIPE CARD BODY & HEADER
+   -------------------------------------------------------------------------- */
+.recipe-card-body {
+  padding: 2.25rem 2rem 2.75rem;
+}
+
+.recipe-header {
+  margin-bottom: 2rem;
+}
+
+.category-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.category-tag {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.cuisine-tag {
+  font-size: 0.8rem;
+  color: var(--color-text-subtle);
+}
+
+/* Fluid responsive typography via clamp() */
+.recipe-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 1.3rem + 2.2vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--color-text-main);
+  margin-bottom: 1rem;
+}
+
+.recipe-description {
+  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.05rem);
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 980px;
+  margin-bottom: 1.25rem;
+}
+
+/* Dietary Tags */
+.dietary-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-pill {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--color-text-main);
+  transition: border-color var(--transition-fast);
+}
+
+.tag-pill:hover {
+  border-color: var(--color-gold);
+}
+
+/* --------------------------------------------------------------------------
+   7. RECIPE METRICS BAR (CSS Box Model in Action: Grid auto-fit)
+   -------------------------------------------------------------------------- */
+.recipe-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.85rem;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.15rem;
+  margin-bottom: 2.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.75rem 0.5rem;
+  border-radius: var(--radius-md);
+  background: var(--color-bg-card);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-fast);
+}
+
+.metric-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-2px);
+}
+
+.metric-icon {
+  font-size: 1.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.metric-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-subtle);
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.metric-value {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+/* --------------------------------------------------------------------------
+   8. RESPONSIVE TWO-COLUMN LAYOUT: INGREDIENTS VS PREPARATION STEPS
+   - Mobile: 1 Column stacked
+   - Desktop (>= 860px): 2 Columns side-by-side
+   -------------------------------------------------------------------------- */
+.recipe-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.25rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 860px) {
+  .recipe-columns {
+    grid-template-columns: 0.95fr 1.35fr;
+    gap: 2.5rem;
+  }
+}
+
+.recipe-column {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding-bottom: 1.15rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.column-icon {
+  font-size: 1.35rem;
+}
+
+.column-title {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+/* --------------------------------------------------------------------------
+   9. INGREDIENTS LIST (Semantic Unordered List <ul>)
+   -------------------------------------------------------------------------- */
+.ingredient-group {
+  margin-bottom: 1.6rem;
+}
+
+.ingredient-group:last-child {
+  margin-bottom: 0;
+}
+
+.group-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.group-title::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-gold);
+  border-radius: 50%;
+}
+
+/* Semantic Unordered List */
+.ingredients-list {
+  list-style: none;
+  /* Custom modern bullet UI */
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ingredient-item {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 0.92rem;
+  color: var(--color-text-main);
+  line-height: 1.55;
+  transition: color var(--transition-fast);
+}
+
+.ingredient-item::before {
+  content: "•";
+  position: absolute;
+  left: 0.4rem;
+  color: var(--color-gold);
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.ingredient-item:hover {
+  color: #fff;
+}
+
+.ingredient-item .qty {
+  font-weight: 700;
+  color: var(--color-gold);
+  margin-right: 0.25rem;
+}
+
+/* --------------------------------------------------------------------------
+   10. PREPARATION STEPS (Semantic Ordered List <ol>)
+   -------------------------------------------------------------------------- */
+.steps-list {
+  list-style: none;
+  /* Preserves <ol> semantics while applying CSS counter */
+  counter-reset: step-number;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  position: relative;
+}
+
+/* Timeline spine connection line */
+.steps-list::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  bottom: 2rem;
+  left: 17px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--border-gold), var(--border-color));
+  z-index: 0;
+}
+
+.step-item {
+  display: flex;
+  gap: 1.15rem;
+  position: relative;
+  z-index: 1;
+}
+
+.step-item::before {
+  counter-increment: step-number;
+  content: counter(step-number);
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-gold);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 0 10px var(--color-gold-glow);
+  transition: all var(--transition-fast);
+}
+
+.step-item:hover::before {
+  background: var(--color-gold);
+  color: #0f1117;
+  transform: scale(1.05);
+}
+
+.step-content {
+  flex: 1;
+  background: var(--color-bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.15rem 1.35rem;
+  transition: all var(--transition-fast);
+}
+
+.step-item:hover .step-content {
+  border-color: var(--border-gold);
+  transform: translateX(3px);
+}
+
+.step-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+
+.step-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+}
+
+.step-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.18rem 0.55rem;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-surface);
+  color: var(--color-gold);
+  border: 1px solid var(--border-gold);
+}
+
+.step-instruction {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.step-instruction strong {
+  color: var(--color-text-main);
+}
+
+/* --------------------------------------------------------------------------
+   11. PRINT STYLESHEET (@media print)
+   Distraction-free print layout for kitchen use
+   -------------------------------------------------------------------------- */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    background-image: none !important;
+    padding: 0 !important;
+  }
+
+  .figure-badges {
+    display: none !important;
+  }
+
+  .recipe-card {
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .recipe-columns {
+    display: block !important;
+  }
+
+  .recipe-column {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+    margin-bottom: 1.5rem !important;
+    page-break-inside: avoid;
+  }
+
+  .steps-list::before {
+    display: none !important;
+  }
+
+  .step-item::before {
+    border-color: #000 !important;
+    color: #000 !important;
+  }
+
+  .recipe-title,
+  .metric-value,
+  .step-title,
+  .group-title {
+    color: #000 !important;
+  }
+}
